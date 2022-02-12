@@ -56,3 +56,4 @@ Available routes include:
 * Would anything here make sense to test?
 * This repository may have old packages, feel free to upgrade the packages and leave an explanation here in the README explaining your thought process.
 * Remember, the devil is in the details
+# spot-hero
