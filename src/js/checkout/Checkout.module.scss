@@ -1,0 +1,33 @@
+.checkoutWrapper {
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formWrapper {
+    border: 1px solid #114455;
+    border-radius: 5px;
+    width: 50vw;
+}
+
+.formHeader {
+    background-color: #0182ff;
+}
+
+.formHeaderText {
+    color: #ffffff;
+}
+
+.spotInformationWrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    gap: 30px;
+}
+
+.image {
+    border-radius: 5px;
+}

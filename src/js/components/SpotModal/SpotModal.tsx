@@ -1,17 +1,11 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./SpotModal.module.scss";
-
-type ModalDataInformation = {
-  image: string;
-  distance: string;
-  title: string;
-  price: number;
-  description: string;
-};
+import { Link } from "react-router-dom";
+import { SpotData } from "../../types";
 
 type SpotModalProps = {
-  spotData?: ModalDataInformation;
+  spotData?: SpotData;
   handleClose: () => void;
   isModalOpen: boolean;
 };
@@ -21,7 +15,7 @@ const SpotModal = ({ spotData, handleClose, isModalOpen }: SpotModalProps) => {
     return null;
   }
 
-  const { title, description, price } = spotData;
+  const { title, description, price, id } = spotData;
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -44,9 +38,11 @@ const SpotModal = ({ spotData, handleClose, isModalOpen }: SpotModalProps) => {
               <span className={styles.contentWrapper}>
                 <h2>{title}</h2>
                 <p className={styles.description}> {description}</p>
-                <button
-                  className={styles.bookButton}
-                >{`${formattedPrice} | Book it!`}</button>
+                <Link to={`/checkout/${id}`}>
+                  <button
+                    className={styles.bookButton}
+                  >{`${formattedPrice} | Book it!`}</button>
+                </Link>
               </span>
             </div>
           </motion.div>
