@@ -1,24 +1,21 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import TextButton from '../../common/TextButton';
-import SpotItem from '../../spot/SpotItem';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
+import TextButton from "../../common/TextButton";
+import SpotItem from "../../spot/SpotItem";
 
 export default class SpotList extends PureComponent {
     static propTypes = {
         selectedSpot: PropTypes.object,
         spots: PropTypes.arrayOf(PropTypes.object).isRequired,
-        setSpot: PropTypes.func.isRequired
+        setSpot: PropTypes.func.isRequired,
     };
 
-    _onDetailsClick = spot => {
+    _onDetailsClick = (spot) => {
         this.props.setSpot(spot);
     };
 
     render() {
-        const {
-            selectedSpot,
-            spots
-        } = this.props;
+        const { selectedSpot, spots } = this.props;
 
         return (
             <div className="SpotList">
@@ -30,18 +27,19 @@ export default class SpotList extends PureComponent {
                     <p>{spots.length} Spots Available</p>
                 </div>
                 <div className="SpotList-spots">
-                    {spots.map(spot => {
+                    {spots.map((spot) => {
                         return (
                             <SpotItem
                                 key={spot.id}
                                 data={spot}
-                                isSelected={selectedSpot && selectedSpot.id === spot.id}
+                                isSelected={
+                                    selectedSpot && selectedSpot.id === spot.id
+                                }
                                 onDetailsClick={this._onDetailsClick}
                             />
                         );
                     })}
                 </div>
-
             </div>
         );
     }
