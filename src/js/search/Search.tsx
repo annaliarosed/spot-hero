@@ -24,10 +24,10 @@ const Search = ({ spots }: SearchProps) => {
           <p>{spots.length} Spots Available</p>
         </div>
         <div className="SpotList-spots">
-          {spots.map((spot, index) => (
+          {spots.map((spot) => (
             <SpotItem
               key={spot.id}
-              data={spot}
+              spot={spot}
               isSelected={spot.id === selectedSpot?.id}
               handleDetailsClick={() => {
                 setIsModalOpen(true);

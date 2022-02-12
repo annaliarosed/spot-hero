@@ -4,27 +4,22 @@ import classNames from "classnames";
 import Image from "../common/Image";
 import TextButton from "../common/TextButton";
 import SpotModal from "../components/SpotModal/SpotModal";
+import { SpotData } from "../types";
 
 type SpotItemProps = {
   showDetails?: boolean;
   isSelected: boolean;
-  //TODO: type this correctly
-  data: any;
+  spot: SpotData;
   handleDetailsClick: () => void;
 };
-
-// todo
-// handle own details click
-//remove uncessary props for this project: is selected, show details, onDetails click
 
 const SpotItem = ({
   showDetails = true,
   isSelected,
-  data,
+  spot,
   handleDetailsClick,
 }: SpotItemProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log("data", data);
+  const { title, distance, image } = spot;
 
   return (
     <div
@@ -32,10 +27,11 @@ const SpotItem = ({
         "SpotItem-selected": isSelected,
       })}
     >
-      {/* <Image src={data.image} /> */}
+      {/* @ts-expect-error:TODO: fix this typing */}
+      <Image src={image} />
       <div className="SpotItem-info">
-        <h2>{data.title}</h2>
-        <p>{data.distance}</p>
+        <h2>{title}</h2>
+        <p>{distance}</p>
         {showDetails && (
           <div>
             {/* @ts-expect-error:TODO: fix this typing */}
@@ -43,12 +39,6 @@ const SpotItem = ({
           </div>
         )}
       </div>
-
-      <SpotModal
-        spotData={data}
-        handleClose={() => setIsModalOpen(false)}
-        isModalOpen={isModalOpen}
-      />
     </div>
   );
 };
