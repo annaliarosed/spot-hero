@@ -11,12 +11,16 @@ type ModalDataInformation = {
 };
 
 type SpotModalProps = {
-  spotData: ModalDataInformation;
+  spotData?: ModalDataInformation;
   handleClose: () => void;
   isModalOpen: boolean;
 };
 
 const SpotModal = ({ spotData, handleClose, isModalOpen }: SpotModalProps) => {
+  if (!spotData) {
+    return null;
+  }
+
   const { title, description, price } = spotData;
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",

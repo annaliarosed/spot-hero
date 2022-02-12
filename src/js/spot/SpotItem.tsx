@@ -6,17 +6,23 @@ import TextButton from "../common/TextButton";
 import SpotModal from "../components/SpotModal/SpotModal";
 
 type SpotItemProps = {
-  showDetails: boolean;
+  showDetails?: boolean;
   isSelected: boolean;
   //TODO: type this correctly
   data: any;
+  handleDetailsClick: () => void;
 };
 
 // todo
 // handle own details click
 //remove uncessary props for this project: is selected, show details, onDetails click
 
-const SpotItem = ({ showDetails = true, isSelected, data }: SpotItemProps) => {
+const SpotItem = ({
+  showDetails = true,
+  isSelected,
+  data,
+  handleDetailsClick,
+}: SpotItemProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   console.log("data", data);
 
@@ -33,9 +39,7 @@ const SpotItem = ({ showDetails = true, isSelected, data }: SpotItemProps) => {
         {showDetails && (
           <div>
             {/* @ts-expect-error:TODO: fix this typing */}
-            <TextButton onClick={() => setIsModalOpen(true)}>
-              Details
-            </TextButton>
+            <TextButton onClick={handleDetailsClick}>Details</TextButton>
           </div>
         )}
       </div>
