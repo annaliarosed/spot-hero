@@ -47,6 +47,7 @@
     "connected-react-router": "6.9.1",
     "core-js": "3.0.1",
     "form-serialize": "0.7.2",
+    "framer-motion": "4.1.17",
     "history": "4.9.0",
     "prop-types": "15.7.2",
     "react": "17.0.1",

@@ -40,9 +40,11 @@ const SpotItem = ({ showDetails = true, isSelected, data }: SpotItemProps) => {
         )}
       </div>
 
-      {isModalOpen && (
-        <SpotModal spotData={data} handleClose={() => setIsModalOpen(false)} />
-      )}
+      <SpotModal
+        spotData={data}
+        handleClose={() => setIsModalOpen(false)}
+        isModalOpen={isModalOpen}
+      />
     </div>
   );
 };
