@@ -18,14 +18,14 @@
     justify-content: center;
     background-color: #1d426c;
     z-index: 1;
-    animation: fadeIn 1s ease-in;
+    animation: fadeIn 0.5s ease-in;
 }
 
 .modal {
     background-color: #ffffff;
     border-radius: 5px;
     color: #1d426c;
-    max-width: 50vw;
+    max-width: 40vw;
     display: flex;
     flex-direction: column;
 }
@@ -35,13 +35,6 @@
     flex-direction: column;
     align-items: center;
     padding: 0 40px 40px;
-}
-
-.contentWrapper {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
 }
 
 .closeButton {
@@ -58,6 +51,17 @@
     }
 }
 
+.contentWrapper {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.description {
+    font-size: 15px;
+}
+
 .bookButton {
     align-self: center;
     background-color: #0182ff;
@@ -67,6 +71,7 @@
     border-radius: 5px;
     font-weight: 600;
     font-size: 15px;
+    margin-top: 20px;
 
     &:hover {
         cursor: pointer;

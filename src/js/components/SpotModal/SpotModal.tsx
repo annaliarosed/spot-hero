@@ -39,7 +39,7 @@ const SpotModal = ({ spotData, handleClose, isModalOpen }: SpotModalProps) => {
               <h1>Spot Details</h1>
               <span className={styles.contentWrapper}>
                 <h2>{title}</h2>
-                <p>{description}</p>
+                <p className={styles.description}> {description}</p>
                 <button
                   className={styles.bookButton}
                 >{`${formattedPrice} | Book it!`}</button>
