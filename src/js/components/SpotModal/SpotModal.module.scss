@@ -7,12 +7,58 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #31aa52;
-    background-color: #31aa52;
+    background-color: #1d426c;
+    z-index: 1;
 }
 
 .modal {
-    width: 200px;
-    height: 200px;
-    background-color: #3d083f;
+    background-color: #ffffff;
+    border-radius: 5px;
+    color: #1d426c;
+    max-width: 50vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 40px 40px;
+}
+
+.contentWrapper {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.closeButton {
+    align-self: flex-end;
+    padding: 10px 15px 0 0;
+    font-size: 20px;
+    border: none;
+    background-color: transparent;
+    font-weight: 400;
+    color: #1d426c;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.bookButton {
+    align-self: center;
+    background-color: #0182ff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 15px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }

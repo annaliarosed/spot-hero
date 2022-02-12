@@ -7,7 +7,8 @@ $spot-list-width: 460px;
 }
 
 .Search-content {
-    position: absolute;
+    // TODO fix / put it back? it messed up button on modal
+    // position: absolute;
     top: 0;
     left: $spot-list-width;
     width: calc(100vw - #{$spot-list-width});
