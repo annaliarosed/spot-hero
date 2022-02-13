@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 import Checkout from "./checkout/Checkout.tsx";
-import Confirmation from "./confirmation/Confirmation";
+import Confirmation from "./confirmation/Confirmation.tsx";
 import Search from "./search/Search.tsx";
 import "../sass/main.scss";
 
@@ -19,7 +19,7 @@ const App = ({ spots }) => {
                 }}
             />
             <Route path="/checkout/:id" component={Checkout} />
-            <Route path="/confirmation" component={Confirmation} />
+            <Route path="/confirmation/:id" component={Confirmation} />
         </Switch>
     );
 };

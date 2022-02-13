@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
-import cn from "classnames";
-import { NavLink, useParams } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
+import cn from "classnames";
+import { NavLink, useHistory, useParams } from "react-router-dom";
+import { useForm, Controller } from "react-hook-form";
 import { SpotData } from "../types";
 import styles from "./Checkout.module.scss";
 import Image from "../common/Image";
@@ -24,6 +24,7 @@ const formDefaultValues = {
 
 const Checkout = () => {
   const { id } = useParams<{ id: string }>();
+  const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [spotData, setSpotData] = useState<SpotData | undefined>();
   const {
@@ -48,9 +49,29 @@ const Checkout = () => {
     getSpotData();
   }, [id]);
 
+  const handleCheckoutSubmit = async (data: FormData) => {
+    try {
+      await axios
+        .post(`/reservations`, {
+          spotId: id,
+          email: data.email,
+          phone: data.phoneNumber,
+          lastName: data.lastName,
+          firstName: data.firstName,
+        })
+        .then((res) => {
+          console.log(res);
+          console.log(res.data);
+        });
+
+      history.push(`/confirmation/${id}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (loading) {
-    // TODO make prettier
-    return <div>Loading....</div>;
+    return <div className={styles.loadingIndicator}>Loading....</div>;
   }
 
   if (!spotData) {
@@ -65,10 +86,6 @@ const Checkout = () => {
   });
 
   const formattedPrice = formatter.format(price);
-  // TODO: check all colors
-  // TODO: break fields out in their own component
-
-  console.log(errors.email?.message, "errors");
 
   return (
     <div className={styles.checkoutWrapper}>
@@ -93,7 +110,7 @@ const Checkout = () => {
 
         <form
           className={styles.form}
-          onSubmit={handleSubmit((data) => console.log(data))}
+          onSubmit={handleSubmit(handleCheckoutSubmit)}
         >
           <div className={styles.fieldWrapper}>
             <p className={styles.fieldText}>First Name</p>

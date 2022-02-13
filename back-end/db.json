@@ -81,5 +81,52 @@
       "image": "https://res.cloudinary.com/spothero/image/upload/v1579704582/front-end/code-challenge/iy9iobjbtmrix01hp2yw.jpg"
     }
   ],
-  "reservations": []
+  "reservations": [
+    {
+      "dataToSubmit": {
+        "spotId": "1",
+        "email": "ann_smith@gmail.com",
+        "phone": "12222222222",
+        "lastName": "Smith",
+        "firstName": "Ann"
+      },
+      "id": 1
+    },
+    {
+      "dataToSubmit": {
+        "spotId": "1",
+        "email": "aaa@sd.com",
+        "phone": "111",
+        "lastName": "aaa",
+        "firstName": "aaa"
+      },
+      "id": 2
+    },
+    {
+      "dataToSubmit": {
+        "spotId": "1",
+        "email": "annaliadestefano@gmail.com",
+        "phone": "11111111111",
+        "lastName": "DeStefano",
+        "firstName": "Annalia"
+      },
+      "id": 3
+    },
+    {
+      "spotId": "1",
+      "email": "annaliadestefano@gmail.com",
+      "phone": "12222222222",
+      "lastName": "DeStefano",
+      "firstName": "Annalia",
+      "id": 4
+    },
+    {
+      "spotId": "5",
+      "email": "annaliadestefano@gmail.com",
+      "phone": "12222",
+      "lastName": "DeStefano",
+      "firstName": "Annalia",
+      "id": 5
+    }
+  ]
 }
