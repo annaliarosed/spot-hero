@@ -18,7 +18,13 @@
     background-color: #0182ff;
     padding: 15px;
     margin-bottom: 30px;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.formHeaderTextLink {
+    display: flex;
+    width: fit-content;
 }
 
 .formHeaderText {
@@ -28,7 +34,6 @@
 
 .spotInformationWrapper {
     display: flex;
-    flex-direction: row;
     padding: 0 40px;
     gap: 30px;
 }
@@ -61,6 +66,7 @@
     padding: 7px;
     margin: 10px 0;
     color: #5c799b;
+
     &:focus {
         outline: 1px solid #1bbd72;
         border-color: #1bbd72;
@@ -82,6 +88,22 @@
     }
 
     &.disabled {
-        background-color: rgb(182, 26, 26);
+        background-color: #bebebe;
+        color: #606060;
+    }
+}
+
+.fieldWrapper {
+    margin-bottom: 10px;
+
+    &.error {
+        p {
+            color: #b61a1a;
+        }
+
+        input {
+            outline: 1px solid #b61a1a;
+            border-color: #b61a1a;
+        }
     }
 }

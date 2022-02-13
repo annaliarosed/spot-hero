@@ -15,6 +15,13 @@ type FormData = {
   phoneNumber: string;
 };
 
+const formDefaultValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  phoneNumber: "",
+};
+
 const Checkout = () => {
   const { id } = useParams<{ id: string }>();
   const [loading, setLoading] = useState(true);
@@ -23,9 +30,8 @@ const Checkout = () => {
     register,
     handleSubmit,
     control,
-    watch,
     formState: { errors, isDirty, isValid },
-  } = useForm<FormData>();
+  } = useForm<FormData>({ mode: "onChange", defaultValues: formDefaultValues });
 
   useEffect(() => {
     const getSpotData = async () => {
@@ -60,12 +66,15 @@ const Checkout = () => {
 
   const formattedPrice = formatter.format(price);
   // TODO: check all colors
+  // TODO: break fields out in their own component
+
+  console.log(errors.email?.message, "errors");
 
   return (
     <div className={styles.checkoutWrapper}>
       <div className={styles.formWrapper}>
         <div className={styles.formHeader}>
-          <NavLink to="/">
+          <NavLink className={styles.formHeaderTextLink} to="/">
             <p className={styles.formHeaderText}>{`< Back to Search`}</p>
           </NavLink>
         </div>
@@ -86,33 +95,47 @@ const Checkout = () => {
           className={styles.form}
           onSubmit={handleSubmit((data) => console.log(data))}
         >
-          <div>
+          <div className={styles.fieldWrapper}>
             <p className={styles.fieldText}>First Name</p>
             <input className={styles.field} {...register("firstName")} />
           </div>
-          <div>
+          <div className={styles.fieldWrapper}>
             <p className={styles.fieldText}>Last Name</p>
             <input className={styles.field} {...register("lastName")} />
           </div>
-          <div>
+          <div
+            className={cn(styles.fieldWrapper, {
+              [styles.error]: errors.email,
+            })}
+          >
             <p className={styles.fieldText}>Email</p>
             <input
               className={styles.field}
               type="email"
-              {...register("email", { required: true })}
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "Please enter a valid email",
+                },
+              })}
             />
+            {errors.email && <p>{errors.email.message}</p>}
           </div>
-          <div>
+          <div
+            className={cn(styles.fieldWrapper, {
+              [styles.error]: errors.phoneNumber,
+            })}
+          >
             <p className={styles.fieldText}>Phone Number</p>
-            {/* <input
-              className={styles.field}
-              {...register("phoneNumber", { required: true })}
-            /> */}
-
             <Controller
               name="phoneNumber"
               control={control}
-              rules={{ required: true }}
+              rules={{
+                required: {
+                  value: true,
+                  message: "Please enter a valid phone number",
+                },
+              }}
               render={({ field }) => (
                 <PhoneInput
                   {...field}
@@ -122,13 +145,14 @@ const Checkout = () => {
                 />
               )}
             />
+            {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
           </div>
           <button
             className={cn(styles.submitButton, {
-              [styles.disabled]: !isDirty,
+              [styles.disabled]: !isDirty || !isValid,
             })}
             type="submit"
-            disabled={!isDirty}
+            disabled={!isDirty || !isValid}
           >
             {`Purchase for ${formattedPrice}`}
           </button>
