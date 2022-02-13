@@ -8,7 +8,7 @@
 }
 
 .formWrapper {
-    border: 1px solid #cad3dc;
+    border: 1px solid #ced3de;
     border-radius: 5px;
     width: 600px;
     background-color: #ffffff;
@@ -49,10 +49,39 @@
     padding: 0 40px 40px;
 }
 
+.fieldText {
+    color: #5c799b;
+    font-weight: 600;
+}
+
 .field {
     width: 100%;
+    border: 1px solid #ced3de;
+    border-radius: 3px;
+    padding: 7px;
+    margin: 10px 0;
+
+    &:focus {
+        outline: 1px solid #1bbd72;
+        border-color: #1bbd72;
+    }
 }
 
 .submitButton {
     align-self: flex-end;
+    background-color: #1bbd72;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    margin-top: 20px;
+    font-weight: 600;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.disabled {
+        background-color: rgb(182, 26, 26);
+    }
 }

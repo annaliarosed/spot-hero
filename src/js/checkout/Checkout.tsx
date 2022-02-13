@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import cn from "classnames";
 import { NavLink, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -21,7 +22,7 @@ const Checkout = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm<FormData>();
 
   useEffect(() => {
@@ -48,9 +49,15 @@ const Checkout = () => {
     return null;
   }
 
-  const { title, distance, image } = spotData;
+  const { title, distance, image, price } = spotData;
 
-  // TODO: add grey line under spot info
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
+  const formattedPrice = formatter.format(price);
+  // TODO: check all colors
 
   return (
     <div className={styles.checkoutWrapper}>
@@ -78,24 +85,36 @@ const Checkout = () => {
           onSubmit={handleSubmit((data) => console.log(data))}
         >
           <div>
-            <p>First Name</p>
+            <p className={styles.fieldText}>First Name</p>
             <input className={styles.field} {...register("firstName")} />
           </div>
           <div>
-            <p>Last Name</p>
+            <p className={styles.fieldText}>Last Name</p>
             <input className={styles.field} {...register("lastName")} />
           </div>
           <div>
-            <p>Email</p>
-            <input className={styles.field} {...register("email")} />
+            <p className={styles.fieldText}>Email</p>
+            <input
+              className={styles.field}
+              type="email"
+              {...register("email", { required: true })}
+            />
           </div>
           <div>
-            <p>Phone Number</p>
-            <input className={styles.field} {...register("phoneNumber")} />
+            <p className={styles.fieldText}>Phone Number</p>
+            <input
+              className={styles.field}
+              {...register("phoneNumber", { required: true })}
+            />
           </div>
-
-          <button className={styles.submitButton} type="submit">
-            submit
+          <button
+            className={cn(styles.submitButton, {
+              [styles.disabled]: !isDirty,
+            })}
+            type="submit"
+            disabled={!isDirty}
+          >
+            {`Purchase for ${formattedPrice}`}
           </button>
         </form>
       </div>
