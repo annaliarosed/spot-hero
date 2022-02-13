@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import PhoneInput from "react-phone-input-2";
 import cn from "classnames";
 import { NavLink, useParams } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import { SpotData } from "../types";
 import styles from "./Checkout.module.scss";
@@ -21,6 +22,7 @@ const Checkout = () => {
   const {
     register,
     handleSubmit,
+    control,
     watch,
     formState: { errors, isDirty, isValid },
   } = useForm<FormData>();
@@ -102,9 +104,23 @@ const Checkout = () => {
           </div>
           <div>
             <p className={styles.fieldText}>Phone Number</p>
-            <input
+            {/* <input
               className={styles.field}
               {...register("phoneNumber", { required: true })}
+            /> */}
+
+            <Controller
+              name="phoneNumber"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <PhoneInput
+                  {...field}
+                  inputClass={styles.field}
+                  country={"us"}
+                  specialLabel=""
+                />
+              )}
             />
           </div>
           <button
