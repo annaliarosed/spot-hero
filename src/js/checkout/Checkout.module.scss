@@ -8,26 +8,51 @@
 }
 
 .formWrapper {
-    border: 1px solid #114455;
+    border: 1px solid #cad3dc;
     border-radius: 5px;
-    width: 50vw;
+    width: 600px;
+    background-color: #ffffff;
 }
 
 .formHeader {
     background-color: #0182ff;
+    padding: 15px;
+    margin-bottom: 30px;
+    border-radius: 5px;
 }
 
 .formHeaderText {
     color: #ffffff;
+    font-weight: 700;
 }
 
 .spotInformationWrapper {
     display: flex;
     flex-direction: row;
-    padding: 15px;
+    padding: 0 40px;
     gap: 30px;
 }
 
 .image {
     border-radius: 5px;
+}
+
+.underline {
+    height: 1px;
+    margin: 20px 40px;
+    background-color: #ebeef3;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px 40px;
+}
+
+.field {
+    width: 100%;
+}
+
+.submitButton {
+    align-self: flex-end;
 }
