@@ -19,6 +19,10 @@ const SpotItem = ({
   spot,
   handleDetailsClick,
 }: SpotItemProps) => {
+  if (!spot) {
+    return null;
+  }
+
   const { title, distance, image } = spot;
 
   return (

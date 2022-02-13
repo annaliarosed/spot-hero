@@ -1,5 +1,5 @@
 import React, { PureComponent, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import Button from "../common/Button";
 import Image from "../common/Image";
@@ -15,6 +15,7 @@ type ConfirmationData = {
 
 const Confirmation = () => {
   const { id } = useParams<{ id: string }>();
+  const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [spotData, setSpotData] = useState<SpotData | undefined>();
   const [reservationData, setReservationData] = useState<
@@ -75,7 +76,7 @@ const Confirmation = () => {
         We emailed a receipt to <a href={`mailto:${email}`}>{email}</a>.
       </p>
       {/* @ts-expect-error */}
-      <Button color="primary" onClick={() => {}}>
+      <Button color="primary" onClick={() => history.push("/")}>
         Purchase Another Spot!
       </Button>
     </div>

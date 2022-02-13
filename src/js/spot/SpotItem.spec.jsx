@@ -22,12 +22,14 @@ const render = ({ data = {}, ...props } = {}) =>
 
 describe("<SpotItem />", () => {
     it("renders an empty spot when no data is provided", () => {
-        render();
+        rtlRender(<SpotItem spot={{}} />);
 
-        expect(screen.getByRole("img")).toBeEmptyDOMElement();
+        debug();
+        expect(screen.getByTestId("image")).toBeEmptyDOMElement();
         expect(screen.getByText("Details")).toBeInTheDocument();
         expect(screen.getByRole("heading")).toBeEmptyDOMElement();
     });
+
     it("hides the details button", () => {
         render(
             buildSpotItem({ overrides: { showDetails: perBuild(() => false) } })
@@ -39,9 +41,9 @@ describe("<SpotItem />", () => {
     it("renders as expected with data", () => {
         const spotItem = buildSpotItem();
 
-        render(spotItem);
+        rtlRender(<SpotItem spot={spotItem.data} />);
 
-        expect(screen.getByRole("img")).toHaveAttribute(
+        expect(screen.getByTestId("image")).toHaveAttribute(
             "src",
             spotItem.data.image
         );
@@ -53,16 +55,21 @@ describe("<SpotItem />", () => {
         expect(screen.getByText(spotItem.data.distance)).toBeInTheDocument();
     });
 
-    it("calls the detail click handler when clicked", () => {
+    it.only("calls the detail click handler when clicked", () => {
         const onDetailsClick = jest.fn((data) => data);
         const spotItem = buildSpotItem();
 
-        render({ ...spotItem, onDetailsClick });
+        rtlRender(
+            <SpotItem
+                spot={spotItem.data}
+                handleDetailsClick={onDetailsClick}
+            />
+        );
 
         expect(onDetailsClick).toHaveBeenCalledTimes(0);
 
         userEvent.click(screen.getByText("Details"));
 
-        expect(onDetailsClick).toHaveBeenCalledWith(spotItem.data);
+        expect(onDetailsClick).toHaveBeenCalled();
     });
 });

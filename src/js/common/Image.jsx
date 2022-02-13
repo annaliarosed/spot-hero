@@ -6,7 +6,13 @@ const Image = ({ className, onLoad, ...imgAttributes }) => {
     const classes = classNames(className, "Image");
 
     return (
-        <img className={classes} alt="" {...imgAttributes} onLoad={onLoad} />
+        <img
+            data-testid="image"
+            className={classes}
+            alt=""
+            {...imgAttributes}
+            onLoad={onLoad}
+        />
     );
 };
 
