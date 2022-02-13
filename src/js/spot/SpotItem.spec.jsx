@@ -55,7 +55,7 @@ describe("<SpotItem />", () => {
         expect(screen.getByText(spotItem.data.distance)).toBeInTheDocument();
     });
 
-    it.only("calls the detail click handler when clicked", () => {
+    it("calls the detail click handler when clicked", () => {
         const onDetailsClick = jest.fn((data) => data);
         const spotItem = buildSpotItem();
 
