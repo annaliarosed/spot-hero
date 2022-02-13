@@ -17,7 +17,7 @@ const Search = ({ spots }: SearchProps) => {
       <div className="SpotList">
         <div className="SpotList-feature">
           <div className="SpotList-breadcrumbs">
-            {/* @ts-expect-error: TODO fix */}
+            {/* @ts-expect-error */}
             <TextButton>Chicago</TextButton> &gt; Millennium Park
           </div>
           <h1>Millennium Park</h1>

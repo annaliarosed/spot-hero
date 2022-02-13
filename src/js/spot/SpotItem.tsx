@@ -27,14 +27,14 @@ const SpotItem = ({
         "SpotItem-selected": isSelected,
       })}
     >
-      {/* @ts-expect-error:TODO: fix this typing */}
+      {/* @ts-expect-error */}
       <Image src={image} />
       <div className="SpotItem-info">
         <h2>{title}</h2>
         <p>{distance}</p>
         {showDetails && (
           <div>
-            {/* @ts-expect-error:TODO: fix this typing */}
+            {/* @ts-expect-error */}
             <TextButton onClick={handleDetailsClick}>Details</TextButton>
           </div>
         )}

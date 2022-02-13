@@ -23,7 +23,6 @@ const SpotModal = ({ spotData, handleClose, isModalOpen }: SpotModalProps) => {
 
   const formattedPrice = formatter.format(price);
 
-  // TODO make animation smoother
   return (
     <AnimatePresence>
       {isModalOpen && (

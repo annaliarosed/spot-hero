@@ -98,7 +98,7 @@ const Checkout = () => {
 
         <div>
           <div className={styles.spotInformationWrapper}>
-            {/* @ts-expect-error: TODO type this */}
+            {/* @ts-expect-error */}
             <Image className={styles.image} src={image} />
             <div>
               <h1>{title}</h1>
