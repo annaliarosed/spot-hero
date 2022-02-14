@@ -24,7 +24,7 @@ const mockedResponse: AxiosResponse = {
     distance: "123",
     title: "test title",
     price: 12,
-    description: "description",
+    description: "test description",
   },
   status: 200,
   statusText: "OK",
@@ -46,7 +46,6 @@ test("renders with empty fields", async () => {
   );
 
   expect(axios.get).toHaveBeenCalled();
-
   await waitFor(() => expect(axios.get).toBeCalledWith("/spots/1"));
 
   const firstNameInput = screen.getByRole("textbox", {
@@ -82,7 +81,6 @@ test("allows user to edit fields ", async () => {
   );
 
   expect(axios.get).toHaveBeenCalled();
-
   await waitFor(() => expect(axios.get).toBeCalledWith("/spots/1"));
 
   const firstNameInput = screen.getByRole("textbox", {
@@ -115,14 +113,13 @@ test("allows user to edit fields ", async () => {
 test("displays error states", async () => {
   jest.spyOn(ReactRouter, "useParams").mockReturnValue({ id: "1" });
 
-  const { debug } = render(
+  render(
     <Router history={getHistory()}>
       <Checkout />
     </Router>
   );
 
   expect(axios.get).toHaveBeenCalled();
-
   await waitFor(() => expect(axios.get).toBeCalledWith("/spots/1"));
 
   const emailInput = screen.getByRole("textbox", {
@@ -134,14 +131,17 @@ test("displays error states", async () => {
   });
 
   userEvent.type(emailInput, "arwenundómiel@gmail.com");
+
+  // clear input to produce an error
   userEvent.clear(emailInput);
 
   const emailErrorText = await screen.findByText(/Please enter a valid email/i);
   expect(emailErrorText).toBeInTheDocument();
 
   userEvent.type(emailInput, "arwenundómiel@gmail.com");
-
   userEvent.type(phoneInput, "1234567896");
+
+  // clear input to produce an error
   userEvent.clear(phoneInput);
 
   const phoneErrorText = await screen.findByText(
@@ -151,23 +151,23 @@ test("displays error states", async () => {
   expect(phoneErrorText).toBeInTheDocument();
 });
 
-test("", async () => {
+test("allows user to submit the form", async () => {
   jest.spyOn(ReactRouter, "useParams").mockReturnValue({ id: "1" });
 
-  const { debug } = render(
+  render(
     <Router history={getHistory()}>
       <Checkout />
     </Router>
   );
 
   expect(axios.get).toHaveBeenCalled();
-
   await waitFor(() => expect(axios.get).toBeCalledWith("/spots/1"));
 
   const submitButton = screen.getByRole("button", {
     name: /purchase for \$12\.00/i,
   });
 
+  // check that the submit button is disabled when no fields have been touched
   expect(submitButton).toBeDisabled();
 
   const firstNameInput = screen.getByRole("textbox", {
@@ -201,6 +201,7 @@ test("", async () => {
   });
 
   expect(enabledSubmitButton).toBeEnabled();
+
   userEvent.click(enabledSubmitButton);
 
   waitFor(() => expect(axios.post).toHaveBeenCalled());
