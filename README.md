@@ -1,3 +1,6 @@
+
+
+
 # SpotHero FE Coding Challenge
 Complete the two stories below to finalize a fictitious SpotHero checkout flow.
 
@@ -57,3 +60,14 @@ Available routes include:
 * This repository may have old packages, feel free to upgrade the packages and leave an explanation here in the README explaining your thought process.
 * Remember, the devil is in the details
 # spot-hero
+
+
+
+Video demonstration:
+
+https://user-images.githubusercontent.com/56635645/153947147-7ce54b6d-a533-4a49-a3a4-4df78d0a1130.mov
+
+
+Libraries chosen
+- react hook form
+- framer motion
