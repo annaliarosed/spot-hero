@@ -28,9 +28,8 @@ const SpotModal = ({ spotData, handleClose, isModalOpen }: SpotModalProps) => {
       {isModalOpen && (
         <motion.div exit={{ opacity: 0 }} className={styles.wrapper}>
           <motion.div exit={{ opacity: 0 }} className={styles.modal}>
-            {/* Style X better */}
             <button onClick={handleClose} className={styles.closeButton}>
-              x
+              𝖷
             </button>
             <div className={styles.modalContent}>
               <h1>Spot Details</h1>
