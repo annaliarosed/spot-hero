@@ -1,16 +1,27 @@
 
+# SpotHero FE Coding Challenge Submission
 
-Video demonstration:
+#### Video demonstration:
 
 https://user-images.githubusercontent.com/56635645/153947147-7ce54b6d-a533-4a49-a3a4-4df78d0a1130.mov
 
 
-Libraries chosen
-- react hook form
-- framer motion
+#### Libraries chosen
 
- {/* @ts-expect-error */}
- because the mix of tsx and jsx components
+1. react-hook-form
+  - I really like this form library for the very thorough documentation and validation it provides.
+2. framer-motion
+  - I used this only for the animation of the incoming and exiting modal. I decided it was better time management to bring in the library and use it instead of spending too much time on implementing the animation with only css.
+
+#### Notes
+
+You will see 
+
+```
+{/* @ts-expect-error */}
+```
+
+in some of the code in front of `<Image />` and `<TextButton />` this is because of the mix of `tsx` and `jsx` components. I decided it was more important to show my submission then go through and change the reusable components from `jsx` to `tsx` and provide typing for them. Although given more time I would definitely type everything.
 
 # SpotHero FE Coding Challenge
 Complete the two stories below to finalize a fictitious SpotHero checkout flow.
