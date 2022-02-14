@@ -10,10 +10,14 @@ afterEach(cleanup);
 
 jest.mock("axios");
 
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useParams: jest.fn(),
-}));
+jest.mock("react-router-dom", () => {
+  const originalModule = jest.requireActual("react-router-dom");
+
+  return {
+    ...originalModule,
+    useParams: jest.fn(),
+  };
+});
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
