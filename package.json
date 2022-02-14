@@ -68,6 +68,12 @@
     "sass": "1.38.2",
     "transitionEnd": "1.0.2"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "resetMocks": false
+  },
   "browserslist": [
     "defaults"
   ]

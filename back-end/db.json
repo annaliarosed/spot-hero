@@ -127,6 +127,22 @@
       "lastName": "DeStefano",
       "firstName": "Annalia",
       "id": 5
+    },
+    {
+      "spotId": "1",
+      "email": "aaaaa@ssff.com",
+      "phone": "122",
+      "lastName": "aaa",
+      "firstName": "s",
+      "id": 6
+    },
+    {
+      "spotId": "3",
+      "email": "undomiel@gmail.com",
+      "phone": "10976567890",
+      "lastName": "undómiel",
+      "firstName": "arwen",
+      "id": 7
     }
   ]
 }

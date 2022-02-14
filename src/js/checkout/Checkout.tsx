@@ -37,12 +37,14 @@ const Checkout = () => {
   useEffect(() => {
     const getSpotData = async () => {
       setLoading(true);
+
       try {
         const { data } = await axios.get(`/spots/${id}`);
         setSpotData(data);
       } catch (error) {
         console.error(error);
       }
+
       setLoading(false);
     };
 
@@ -51,18 +53,13 @@ const Checkout = () => {
 
   const handleCheckoutSubmit = async (data: FormData) => {
     try {
-      await axios
-        .post(`/reservations`, {
-          spotId: id,
-          email: data.email,
-          phone: data.phoneNumber,
-          lastName: data.lastName,
-          firstName: data.firstName,
-        })
-        .then((res) => {
-          console.log(res);
-          console.log(res.data);
-        });
+      await axios.post(`/reservations`, {
+        spotId: id,
+        email: data.email,
+        phone: data.phoneNumber,
+        lastName: data.lastName,
+        firstName: data.firstName,
+      });
 
       history.push(`/confirmation/${id}`);
     } catch (error) {
@@ -113,56 +110,64 @@ const Checkout = () => {
           onSubmit={handleSubmit(handleCheckoutSubmit)}
         >
           <div className={styles.fieldWrapper}>
-            <p className={styles.fieldText}>First Name</p>
-            <input className={styles.field} {...register("firstName")} />
+            <label className={styles.fieldText}>
+              First Name
+              <input className={styles.field} {...register("firstName")} />
+            </label>
           </div>
           <div className={styles.fieldWrapper}>
-            <p className={styles.fieldText}>Last Name</p>
-            <input className={styles.field} {...register("lastName")} />
+            <label className={styles.fieldText}>
+              Last Name
+              <input className={styles.field} {...register("lastName")} />
+            </label>
           </div>
           <div
             className={cn(styles.fieldWrapper, {
               [styles.error]: errors.email,
             })}
           >
-            <p className={styles.fieldText}>Email</p>
-            <input
-              className={styles.field}
-              type="email"
-              {...register("email", {
-                required: {
-                  value: true,
-                  message: "Please enter a valid email",
-                },
-              })}
-            />
-            {errors.email && <p>{errors.email.message}</p>}
+            <label className={styles.fieldText}>
+              Email
+              <input
+                className={styles.field}
+                type="email"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Please enter a valid email",
+                  },
+                })}
+              />
+              {errors.email && <p>{errors.email.message}</p>}
+            </label>
           </div>
           <div
             className={cn(styles.fieldWrapper, {
               [styles.error]: errors.phoneNumber,
             })}
           >
-            <p className={styles.fieldText}>Phone Number</p>
-            <Controller
-              name="phoneNumber"
-              control={control}
-              rules={{
-                required: {
-                  value: true,
-                  message: "Please enter a valid phone number",
-                },
-              }}
-              render={({ field }) => (
-                <PhoneInput
-                  {...field}
-                  inputClass={styles.field}
-                  country={"us"}
-                  specialLabel=""
-                />
-              )}
-            />
-            {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
+            <label className={styles.fieldText}>
+              Phone Number
+              <Controller
+                name="phoneNumber"
+                control={control}
+                rules={{
+                  required: {
+                    value: true,
+                    message: "Please enter a valid phone number",
+                  },
+                }}
+                render={({ field }) => (
+                  <PhoneInput
+                    {...field}
+                    inputClass={styles.field}
+                    country={"us"}
+                    specialLabel=""
+                  />
+                )}
+              />
+              {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
+            </label>
           </div>
           <button
             className={cn(styles.submitButton, {
