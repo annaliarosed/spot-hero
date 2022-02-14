@@ -27,7 +27,6 @@ const Confirmation = () => {
       setLoading(true);
       try {
         const { data } = await axios.get(`/reservations/${id}`);
-        console.log(data, "data");
 
         setReservationData(data);
       } catch (error) {
