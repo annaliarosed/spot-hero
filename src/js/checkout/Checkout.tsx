@@ -31,7 +31,7 @@ const Checkout = () => {
     register,
     handleSubmit,
     control,
-    formState: { errors, isDirty, isValid },
+    formState: { errors, isDirty, isValid, isSubmitSuccessful, isSubmitted },
   } = useForm<FormData>({ mode: "onChange", defaultValues: formDefaultValues });
 
   useEffect(() => {
@@ -176,7 +176,9 @@ const Checkout = () => {
             type="submit"
             disabled={!isDirty || !isValid}
           >
-            {`Purchase for ${formattedPrice}`}
+            {isSubmitted && !isSubmitSuccessful
+              ? "Try again"
+              : `Purchase for ${formattedPrice}`}
           </button>
         </form>
       </div>
