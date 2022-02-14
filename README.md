@@ -1,5 +1,16 @@
 
 
+Video demonstration:
+
+https://user-images.githubusercontent.com/56635645/153947147-7ce54b6d-a533-4a49-a3a4-4df78d0a1130.mov
+
+
+Libraries chosen
+- react hook form
+- framer motion
+
+ {/* @ts-expect-error */}
+ because the mix of tsx and jsx components
 
 # SpotHero FE Coding Challenge
 Complete the two stories below to finalize a fictitious SpotHero checkout flow.
@@ -62,12 +73,3 @@ Available routes include:
 # spot-hero
 
 
-
-Video demonstration:
-
-https://user-images.githubusercontent.com/56635645/153947147-7ce54b6d-a533-4a49-a3a4-4df78d0a1130.mov
-
-
-Libraries chosen
-- react hook form
-- framer motion
