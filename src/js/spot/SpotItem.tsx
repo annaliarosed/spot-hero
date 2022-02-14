@@ -1,9 +1,7 @@
-import React, { PureComponent, useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import classNames from "classnames";
 import Image from "../common/Image";
 import TextButton from "../common/TextButton";
-import SpotModal from "../components/SpotModal/SpotModal";
 import { SpotData } from "../types";
 
 type SpotItemProps = {

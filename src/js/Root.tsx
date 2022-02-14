@@ -1,9 +1,9 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
-import axios from "axios";
-import createStore, { getHistory } from "./store/store";
 import App from "./App";
+import createStore, { getHistory } from "./store/store";
 import { SpotData } from "./types";
 
 const Root = () => {

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import PhoneInput from "react-phone-input-2";
 import axios from "axios";
 import cn from "classnames";
-import { NavLink, useHistory, useParams } from "react-router-dom";
+import PhoneInput from "react-phone-input-2";
 import { useForm, Controller } from "react-hook-form";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 import { SpotData } from "../types";
-import styles from "./Checkout.module.scss";
 import Image from "../common/Image";
+import styles from "./Checkout.module.scss";
 
 type FormData = {
   firstName: string;
